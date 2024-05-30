@@ -15,7 +15,6 @@ stages:
             deploy:
               steps:
                 - checkout: self
-                - checkout: JavaProject
 
 
                 - bash: echo hello1
