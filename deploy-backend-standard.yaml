@@ -1,0 +1,23 @@
+parameters:
+- name: TARGET_ENV
+  type: string
+
+stages:
+  - stage: Deploy
+    displayName: Deploy stage
+
+    jobs:
+      - deployment: Deploy
+        environment: $(ADO_ENVIRONMENT_NAME)
+        displayName: Deploy
+        pool:
+          name: self-hosted
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - checkout: JavaProject
+
+                - bash: echo hello1
+                - bash: echo hello2
